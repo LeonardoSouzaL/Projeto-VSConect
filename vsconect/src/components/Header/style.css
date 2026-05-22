@@ -129,4 +129,25 @@ header .header_icone_login {
         padding: 10px;
         transition: all 0.5 ease;
     }
+
+    .menu_links * {
+        margin: 10px 100px 10px 10px;
+    }
+
+    header nav {
+        width: auto;
+    }
+
+    .header_botao_login {
+        display: none;
+    }
+
+    header .header_icone_login {
+        display: flex;
+    }
+
+    header nav svg {
+        width: 35px;
+        fill: var(--branco);
+    }
 }
