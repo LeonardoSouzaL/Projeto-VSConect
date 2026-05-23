@@ -99,6 +99,12 @@ function FormularioLogin() {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Digite seu email."
       />
+      <input
+        type="password"
+        value={senha}
+        onChange={(e) => setSenha(e.target.value)}
+        placeholder="Digite sua senha."
+      />
     </form>
   );
 }
