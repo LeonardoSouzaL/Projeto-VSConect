@@ -105,6 +105,21 @@ function FormularioLogin() {
         onChange={(e) => setSenha(e.target.value)}
         placeholder="Digite sua senha."
       />
+
+      <button type="submit">
+
+      </button>
     </form>
   );
+}
+
+// Estados com Arrays
+const [listaItens, setListaItens] = useState([]);
+
+function adicionarItem(novoItem) {
+  setListaItens([...listaItens, novoItem])
+}
+
+function removerItens(itemParaRemover){
+  setListaItens(listaItens.filter(item => item != itemParaRemover))
 }
