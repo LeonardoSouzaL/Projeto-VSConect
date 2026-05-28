@@ -106,9 +106,7 @@ function FormularioLogin() {
         placeholder="Digite sua senha."
       />
 
-      <button type="submit">
-
-      </button>
+      <button type="submit"></button>
     </form>
   );
 }
@@ -117,9 +115,63 @@ function FormularioLogin() {
 const [listaItens, setListaItens] = useState([]);
 
 function adicionarItem(novoItem) {
-  setListaItens([...listaItens, novoItem])
+  setListaItens([...listaItens, novoItem]);
 }
 
-function removerItens(itemParaRemover){
-  setListaItens(listaItens.filter(item => item != itemParaRemover))
+function removerItens(itemParaRemover) {
+  setListaItens(listaItens.filter((item) => item != itemParaRemover));
+}
+
+import { useEffect } from "react";
+
+function MeuComponente() {
+  useEffect(() => {
+    console.log("Componente carregado");
+  }, []);
+
+  return <div>...</div>;
+}
+
+import { useState, useEffect } from "react";
+import api from "../../utils/api";
+
+function ListaServicos() {
+  const [servicos, setServicos] = useState([]);
+
+  function buscarServicos() {
+    api
+      .get("servicos")
+      // http://localhost:3000/servicos
+
+      .then((response) => {
+        setServicos(response.data);
+      })
+      .catch((error) => {
+        console.log("Erro:", error);
+      });
+  }
+
+  useEffect(() => {
+    buscarServicos();
+  }, []);
+
+  return (
+    <ul>
+      {servicos.map((servico, index) => (
+        <li key={index}>{servico.nome}</li>
+      ))}
+    </ul>
+  );
+}
+
+function cadastrarUsuario(event) {
+  event.preventDefault();
+
+  const formData = new FormData();
+
+  formData.append("nome", nome);
+  formData.append("email", email);
+  formData.append("user_img", foto);
+
+  api.post("users", formData)
 }
